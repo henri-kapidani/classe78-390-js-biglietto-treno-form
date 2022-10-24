@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Biglietto del treno (form)</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/script.js" defer></script>
+</head>
+<body>
+	<div>
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name">
+
+		<label for="kilometers">Kilometri</label>
+		<input type="number" name="kilometers" id="kilometers">
+
+		<label for="age">Age</label>
+		<select name="age" id="age">
+			<option value="label" selected>Seleziona eta'</option>
+			<option value="minorenne">Minorenne</option>
+			<option value="standard">Standard</option>
+			<option value="senior">Over 65</option>
+		</select>
+
+		<button id="btn-generate">Genera</button>
+		<button id="btn-reset">Reset</button>
+	</div>
+
+	<div class="ticket hidden">
+		<ul>
+			<li>
+				Nome: <span id="ticket-name"></span>
+			</li>
+			<li>
+				Prezzo: <span id="ticket-price"></span> €
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
