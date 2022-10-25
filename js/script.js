@@ -33,42 +33,42 @@ const outputPrice = document.getElementById('ticket-price');
 
 const pricePerKilometer = 0.21;
 
-btnGenerate.addEventListener('click', function () {
-	const distance = parseFloat(inputDistance.value);
-	const age = inputAge.value;
+// btnGenerate.addEventListener('click', function () {
+// 	const distance = parseFloat(inputDistance.value);
+// 	const age = inputAge.value;
 
-	if (inputDistance.value != '' && !isNaN(distance) && inputName.value != '' && inputAge.value != 'label') {
-		const basePrice = pricePerKilometer * distance;
+// 	if (inputDistance.value != '' && !isNaN(distance) && inputName.value != '' && inputAge.value != 'label') {
+// 		const basePrice = pricePerKilometer * distance;
 
-		let discountRate;
-		switch (age) {
-			case 'minorenne':
-				discountRate = 20;
-				break;
+// 		let discountRate;
+// 		switch (age) {
+// 			case 'minorenne':
+// 				discountRate = 20;
+// 				break;
 
-			case 'standard':
-				discountRate = 0;
-				break;
+// 			case 'standard':
+// 				discountRate = 0;
+// 				break;
 
-			case 'senior':
-				discountRate = 40;
-				break;
-		}
+// 			case 'senior':
+// 				discountRate = 40;
+// 				break;
+// 		}
 
-		// alternativa A
-		let totalPrice = basePrice - basePrice * discountRate / 100;
-		// totalPrice = parseFloat(totalPrice.toFixed(2));
-		totalPrice = Math.round(totalPrice * 100) / 100;
+// 		// alternativa A
+// 		let totalPrice = basePrice - basePrice * discountRate / 100;
+// 		// totalPrice = parseFloat(totalPrice.toFixed(2));
+// 		totalPrice = Math.round(totalPrice * 100) / 100;
 
-		console.log('Il prezzo del biglietto è: ' + totalPrice + ' €');
+// 		console.log('Il prezzo del biglietto è: ' + totalPrice + ' €');
 
-		outputName.innerHTML = inputName.value;
-		outputPrice.innerHTML = totalPrice;
-		eleTicket.classList.remove('hidden');
-	} else {
-		console.log('Inserire dei valori');
-	}
-})
+// 		outputName.innerHTML = inputName.value;
+// 		outputPrice.innerHTML = totalPrice;
+// 		eleTicket.classList.remove('hidden');
+// 	} else {
+// 		console.log('Inserire dei valori');
+// 	}
+// })
 
 btnReset.addEventListener('mouseenter', function () {
 	outputName.innerHTML = '';
@@ -112,3 +112,41 @@ inputName.addEventListener('focusin', function () {
 		console.log('Inserire dei valori');
 	}
 });
+
+document.querySelector('form').addEventListener('submit', function (event) {
+	event.preventDefault();
+	const distance = parseFloat(inputDistance.value);
+	const age = inputAge.value;
+
+	if (inputDistance.value != '' && !isNaN(distance) && inputName.value != '' && inputAge.value != 'label') {
+		const basePrice = pricePerKilometer * distance;
+
+		let discountRate;
+		switch (age) {
+			case 'minorenne':
+				discountRate = 20;
+				break;
+
+			case 'standard':
+				discountRate = 0;
+				break;
+
+			case 'senior':
+				discountRate = 40;
+				break;
+		}
+
+		// alternativa A
+		let totalPrice = basePrice - basePrice * discountRate / 100;
+		// totalPrice = parseFloat(totalPrice.toFixed(2));
+		totalPrice = Math.round(totalPrice * 100) / 100;
+
+		console.log('Il prezzo del biglietto è: ' + totalPrice + ' €');
+
+		outputName.innerHTML = inputName.value;
+		outputPrice.innerHTML = totalPrice;
+		eleTicket.classList.remove('hidden');
+	} else {
+		console.log('Inserire dei valori');
+	}
+})
